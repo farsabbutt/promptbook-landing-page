@@ -10,6 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
+    <style>
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .animate-blink {
+            animation: blink 1s infinite;
+        }
+    </style>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -51,7 +61,7 @@
     <nav class="fixed top-0 w-full z-50 bg-[#0f1117]/80 backdrop-blur-md border-b border-border">
         <div class="max-w-container mx-auto px-5 flex justify-between items-center h-[70px]">
             <div class="text-xl font-extrabold flex items-center gap-2.5">
-                <svg class="w-6 h-6 fill-primary" viewBox="0 0 24 24"><path d="M19 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M17 12H7V10H17V12M17 15H7V17H17V15M7 7H11V9H7V7Z" /></svg>
+                <img src="assets/icon-48.png" alt="Prompt Book" class="w-6 h-6">
                 Prompt Book
             </div>
             <div class="hidden md:flex gap-[30px]">
@@ -59,7 +69,7 @@
                 <a href="#privacy" class="text-sm text-text-muted hover:text-text-main transition-colors duration-300">Privacy</a>
                 <a href="#tech" class="text-sm text-text-muted hover:text-text-main transition-colors duration-300">Specs</a>
             </div>
-            <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer bg-primary text-white shadow-glow hover:bg-primary-hover hover:-translate-y-0.5">Add to Chrome</a>
+            <a target="_blank" href="https://chromewebstore.google.com/detail/prompt-book-ai-chat-promp/pccnpeicklmjmhlojgjpiglcakhgghno" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer bg-primary text-white shadow-glow hover:bg-primary-hover hover:-translate-y-0.5">Add to Chrome</a>
         </div>
     </nav>
 
@@ -72,11 +82,11 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                Version 1.0 Now Available
+                Version 1.22.0 Now Available
             </div>
             
             <h1 class="text-[2.5rem] md:text-[3.5rem] leading-[1.1] mb-6 font-extrabold tracking-tight">
-                Manage your AI prompts <br>
+                <span id="typing-heading" class="inline-block min-h-[1.2em]"></span><span id="typing-cursor" class="inline-block w-[3px] h-[1em] bg-primary ml-1 align-middle animate-blink"></span> <br>
                 <span class="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">like a professional</span>
             </h1>
             
@@ -95,13 +105,13 @@
                 </div>
                 <div class="w-full md:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-[0.95rem] text-text-main transition-all duration-300 cursor-default hover:bg-white/10 hover:border-primary/30 hover:-translate-y-0.5 group-pill">
                     <svg class="text-accent w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Cloud Sync
+                    Cloud Sync <span class="text-xs text-text-muted">(Coming Soon)</span>
                 </div>
             </div>
             
             <div class="flex gap-4 justify-center mb-16">
-                <button class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer border-none bg-primary text-white shadow-glow hover:bg-primary-hover hover:-translate-y-0.5">Download Extension</button>
-                <button class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer bg-transparent border border-border text-text-main hover:border-primary hover:text-primary">View Demo</button>
+                <a target="_blank" href="https://chromewebstore.google.com/detail/prompt-book-ai-chat-promp/pccnpeicklmjmhlojgjpiglcakhgghno" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer border-none bg-primary text-white shadow-glow hover:bg-primary-hover hover:-translate-y-0.5">Download Extension</a>
+                <a href="#interface" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer bg-transparent border border-border text-text-main hover:border-primary hover:text-primary">View Demo</a>
             </div>
         </div>
     </section>
@@ -165,6 +175,84 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <section id="interface" class="py-24 border-y border-border relative overflow-hidden">
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+    
+        <div class="max-w-container mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Designed for focus</h2>
+                <p class="text-text-muted text-lg max-w-2xl mx-auto">A clean, native interface that feels right at home in your browser.</p>
+            </div>
+    
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+                
+                <div class="w-full lg:w-1/3 flex flex-col gap-4">
+                    <button onclick="switchTab(0)" class="tab-btn w-full text-left p-6 rounded-xl border-l-2 transition-all duration-300 group bg-white/5 border-primary text-text-main shadow-lg" data-index="0">
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Central Library</h3>
+                        <p class="text-sm text-text-muted leading-relaxed">Your entire prompt collection in one searchable, filterable view.</p>
+                    </button>
+    
+                    <button onclick="switchTab(1)" class="tab-btn w-full text-left p-6 rounded-xl border-l-2 border-transparent transition-all duration-300 group hover:bg-white/5 text-text-muted" data-index="1">
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Powerful Editor</h3>
+                        <p class="text-sm text-text-muted leading-relaxed">Draft prompts with syntax highlighting and auto-save protection.</p>
+                    </button>
+    
+                    <button onclick="switchTab(2)" class="tab-btn w-full text-left p-6 rounded-xl border-l-2 border-transparent transition-all duration-300 group hover:bg-white/5 text-text-muted" data-index="2">
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Variable Manager</h3>
+                        <p class="text-sm text-text-muted leading-relaxed">Define dynamic placeholders like <code>[topic]</code> to make prompts reusable.</p>
+                    </button>
+    
+                    <button onclick="switchTab(3)" class="tab-btn w-full text-left p-6 rounded-xl border-l-2 border-transparent transition-all duration-300 group hover:bg-white/5 text-text-muted" data-index="3">
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Smart Injection</h3>
+                        <p class="text-sm text-text-muted leading-relaxed">Fill in variables and send to AI without ever switching tabs.</p>
+                    </button>
+                    
+                     <button onclick="switchTab(4)" class="tab-btn w-full text-left p-6 rounded-xl border-l-2 border-transparent transition-all duration-300 group hover:bg-white/5 text-text-muted" data-index="4">
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Global Settings</h3>
+                        <p class="text-sm text-text-muted leading-relaxed">Customize sync preferences, appearance, and export options.</p>
+                    </button>
+                </div>
+    
+                <div class="w-full lg:w-2/3 sticky top-24">
+                    <div class="relative rounded-xl border border-white/10 bg-[#0f1117] shadow-2xl overflow-hidden aspect-[16/10] group ring-1 ring-white/5">
+                        
+                        <div class="h-10 bg-[#1e212b] border-b border-white/5 flex items-center px-4 gap-2 select-none">
+                            <div class="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#febc2e]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#28c840]"></div>
+                            <div class="ml-4 flex-1 h-6 bg-[#0f1117] rounded border border-white/5 mx-auto max-w-[400px] flex items-center justify-center text-[11px] text-text-muted font-mono opacity-50 truncate px-2">
+                                chrome-extension://prompt-book/library
+                            </div>
+                        </div>
+    
+                        <div class="relative w-full h-full bg-[#0f1117] p-1">
+                            <div class="tab-image absolute inset-0 transition-opacity duration-500 opacity-100 z-10" data-index="0">
+                                <img src="assets/preview1.png" alt="Library View" class="w-full h-full object-contain">
+                            </div>
+                            
+                            <div class="tab-image absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none" data-index="1">
+                                <img src="assets/preview2.png" alt="Editor View" class="w-full h-full object-contain">
+                            </div>
+    
+                            <div class="tab-image absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none" data-index="2">
+                                <img src="assets/preview3.png" alt="Variables Modal" class="w-full h-full object-contain">
+                            </div>
+    
+                            <div class="tab-image absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none" data-index="3">
+                                <img src="assets/preview4.png" alt="Injection View" class="w-full h-full object-contain">
+                            </div>
+                            
+                            <div class="tab-image absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none" data-index="4">
+                                <img src="assets/preview5.png" alt="Settings View" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -255,7 +343,7 @@
                 <div class="flex-1">
                     <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[rgba(99,102,241,0.1)] text-primary border border-[rgba(99,102,241,0.2)] mb-4">Sync</span>
                     <h3 class="text-xl font-bold mb-3">Your data, your choice</h3>
-                    <p class="text-text-muted">By default, everything stays in your browser (Local Storage). enable Cloud Sync via Google Sign-In to access your library across devices securely.</p>
+                    <p class="text-text-muted">By default, everything stays in your browser (Local Storage). enable Cloud Sync (Coming Soon) via Google Sign-In to access your library across devices securely.</p>
                 </div>
                 <div class="flex-1 w-full bg-bg-card h-[300px] rounded-xl border border-border flex items-center justify-center text-xs text-text-muted relative overflow-hidden">
                     <span class="text-[4rem] font-extrabold text-[rgba(255,255,255,0.03)] absolute right-5 -bottom-2.5 leading-none">03</span>
@@ -276,7 +364,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     <div class="border-l-2 border-border pl-5">
                         <h4 class="mb-2 text-text-main font-bold">Local First</h4>
-                        <p class="text-sm text-text-muted">No data leaves your device unless you opt-in to Cloud Sync.</p>
+                        <p class="text-sm text-text-muted">No data leaves your device unless you opt-in to Cloud Sync (Coming Soon).</p>
                     </div>
                     <div class="border-l-2 border-border pl-5">
                         <h4 class="mb-2 text-text-main font-bold">Shadow DOM</h4>
@@ -299,7 +387,7 @@
         <div class="max-w-container mx-auto px-5">
             <h2 class="text-[2.5rem] mb-4 font-bold">Ready to build your Prompt Book?</h2>
             <p class="mb-8 text-text-muted text-[1.1rem]">Join thousands of users optimizing their AI workflow.</p>
-            <button class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold transition-all duration-300 cursor-pointer bg-primary text-white shadow-glow hover:bg-primary-hover hover:-translate-y-0.5 text-[1.1rem]">Add to Chrome - It's Free</button>
+            <a target="_blank" href="https://chromewebstore.google.com/detail/prompt-book-ai-chat-promp/pccnpeicklmjmhlojgjpiglcakhgghno" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold transition-all duration-300 cursor-pointer bg-primary text-white shadow-glow hover:bg-primary-hover hover:-translate-y-0.5 text-[1.1rem]">Add to Chrome - It's Free</a>
         </div>
     </section>
 
@@ -316,6 +404,41 @@
     </footer>
 
     <script>
+        // Typewriter animation for heading
+        function typeWriter(element, text, speed = 50, callback) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            
+            type();
+        }
+
+        function deleteText(element, speed = 30, callback) {
+            const text = element.textContent;
+            let i = text.length;
+            
+            function deleteChar() {
+                if (i > 0) {
+                    element.textContent = text.substring(0, i - 1);
+                    i--;
+                    setTimeout(deleteChar, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            
+            deleteChar();
+        }
+
         // Simple scroll reveal effect (unchanged)
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
@@ -334,7 +457,77 @@
                 el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
                 observer.observe(el);
             });
+
+            // Typewriter animation for heading
+            const headingElement = document.getElementById('typing-heading');
+            const cursorElement = document.getElementById('typing-cursor');
+            
+            if (headingElement && cursorElement) {
+                const firstText = 'Manage your AI prompts';
+                const secondText = 'Prompts management made easy';
+                
+                // Show cursor initially
+                cursorElement.style.display = 'inline-block';
+                
+                // Start typing the first text
+                typeWriter(headingElement, firstText, 120, () => {
+                    // Wait 3 seconds after first text is complete, then hide cursor
+                    setTimeout(() => {
+                        cursorElement.style.display = 'inline-block';
+                        // Delete the first text
+                        deleteText(headingElement, 50, () => {
+                            // Wait a brief moment, then type the second text
+                            setTimeout(() => {
+                                cursorElement.style.display = 'inline-block';
+                                typeWriter(headingElement, secondText, 120, () => {
+                                    // Hide cursor after second text is complete
+                                    setTimeout(() => {
+                                        cursorElement.style.display = 'none';
+                                    }, 2000);
+                                });
+                            }, 300);
+                        });
+                    }, 7000);
+                });
+            }
         });
+
+        function switchTab(selectedIndex) {
+        // 1. Handle Buttons (Left Side)
+        const buttons = document.querySelectorAll('.tab-btn');
+        
+        // Tailwind classes for the ACTIVE state
+        const activeBtnClasses = ['bg-white/5', 'border-primary', 'text-text-main', 'shadow-lg'];
+        // Tailwind classes for the INACTIVE state
+        const inactiveBtnClasses = ['border-transparent', 'hover:bg-white/5', 'text-text-muted'];
+
+        buttons.forEach((btn, index) => {
+            if (index === selectedIndex) {
+                // Add active styles, remove inactive styles
+                btn.classList.add(...activeBtnClasses);
+                btn.classList.remove(...inactiveBtnClasses);
+            } else {
+                // Add inactive styles, remove active styles
+                btn.classList.add(...inactiveBtnClasses);
+                btn.classList.remove(...activeBtnClasses);
+            }
+        });
+
+        // 2. Handle Images (Right Side)
+        const images = document.querySelectorAll('.tab-image');
+        
+        images.forEach((img, index) => {
+            if (index === selectedIndex) {
+                // Show Image
+                img.classList.remove('opacity-0', 'pointer-events-none');
+                img.classList.add('opacity-100', 'z-10');
+            } else {
+                // Hide Image
+                img.classList.remove('opacity-100', 'z-10');
+                img.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+    }
     </script>
 </body>
 </html>
